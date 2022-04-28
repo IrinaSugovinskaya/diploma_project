@@ -1,0 +1,27 @@
+const slides = document.querySelectorAll('.swiper-slide.i-need'),
+        prev = document.querySelector('.tc-button.tc-button-prev'),
+        next = document.querySelector('.tc-button.tc-button-next');
+
+let slideIndex = 1;
+
+showSlides();
+
+function showSlides(n) {
+    if(n>slides.length){
+        slideIndex = 1;
+    }
+    if(n<1){
+        slideIndex = slides.length;
+    }
+    slides.forEach(item => item.style.display = 'none');
+    slides[slideIndex - 1].style.display = 'block';
+}
+function plusSlide(n){
+    showSlides(slideIndex +=n);
+}
+next.addEventListener('click', ()=>{
+    plusSlide(1);
+})
+prev.addEventListener('click', ()=>{
+    plusSlide(-1);
+})
